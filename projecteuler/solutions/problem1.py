@@ -1,7 +1,6 @@
 # https://projecteuler.net/problem=1
 # Find the sum of all the multiples of 3 or 5 below 1000.
 
-
 def sum_of_3_5_multiples_below(n):
     curr, curr_sum = 3, 0
     add_for_3, add_for_5 = 3, 2
