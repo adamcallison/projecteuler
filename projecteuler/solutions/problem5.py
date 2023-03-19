@@ -1,5 +1,5 @@
-# https://projecteuler.net/problem=3
-# What is the largest prime factor of the number 600851475143 ?
+# https://projecteuler.net/problem=5
+# What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 
 import math
 
@@ -34,15 +34,21 @@ def prime_decomposition(n, primes_upto_sqrtn):
         decomp[left] = 1
     return decomp
 
-def largest_prime_factor_of(n):
-    sqrtn = int(math.ceil(math.sqrt(n)))
-    primes_upto_sqrtn = sieve_of_eratosthenes(sqrtn)
-    decomp = prime_decomposition(n, primes_upto_sqrtn)
-    return max(decomp.keys())
+def smallest_evenly_divisible_up_to(n):
+    primes = sieve_of_eratosthenes(n)
+    prime_factors = {}
+    for j in range(2, n+1):
+        decomp = prime_decomposition(j, primes)
+        print(j, decomp)
+        for p, count in decomp.items():
+            prime_factors[p] = max(prime_factors.get(p, 0), count)
+    result = 1
+    for p, count in prime_factors.items():
+        result *= p**count
+    return result
 
 if __name__ == '__main__':
-    #n = 600851475143
-    n = 6
-    print(largest_prime_factor_of(n))
+    n = 20
+    print(smallest_evenly_divisible_up_to(n))
 
 
