@@ -1,10 +1,7 @@
 # https://projecteuler.net/problem=10
 # Find the sum of all the primes below two million.
 
-try:
-    from . import util
-except ImportError:
-    import util
+from projecteuler.solutions import util
 
 def sum_of_primes_below(n):
     j, tot = 1, 0

@@ -1,10 +1,7 @@
 # https://projecteuler.net/problem=3
 # What is the largest prime factor of the number 600851475143 ?
 
-try:
-    from . import util
-except ImportError:
-    import util
+from projecteuler.solutions import util
 
 def largest_prime_factor_of(n):
     decomp = util.prime_decomposition(n)
