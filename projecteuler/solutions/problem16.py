@@ -1,10 +1,7 @@
 # https://projecteuler.net/problem=16
 # What is the sum of the digits of the number 2**1000?
 
-import math
-
 def sum_digits_of_power_of_two(power):
-    num_digits = int(power*math.log10(2)) + 1
     prod_register = [2]
     carry = 0
     for j in range(1, power):
