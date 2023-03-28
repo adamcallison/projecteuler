@@ -1,5 +1,7 @@
 # This file contains tools that are used for more than one problem
 
+from functools import reduce
+
 class PrimeNumberGenerator:
     def __init__(self, max_increment=None):
         self.__primes__ = [2, 3, 5, 7]
@@ -53,3 +55,25 @@ def prime_decomposition(n):
         p = prime_number(j)
     if left > 1: decomp[left] = 1
     return decomp
+
+def divisors(n, proper=True):
+    decomp = prime_decomposition(n)
+    primes, counts = [], []
+    tuple((primes.append(key), counts.append(value)) for key, value in decomp.items())
+    current_counts = [0]*len(counts)
+    pos = 0
+    div = []
+    while True:
+        divisor = reduce((lambda x, y: x*y), (primes[j]**current_counts[j] for j in range(len(current_counts)) if not current_counts[j] == 0), 1)
+        if (not proper) or (divisor != n):
+            div.append(divisor)
+        while (pos < len(current_counts)) and (current_counts[pos] == counts[pos]):
+            current_counts[pos] = 0
+            pos += 1
+        if pos == len(current_counts):
+            break
+        current_counts[pos] += 1
+        pos = 0
+    div.sort()
+    return div
+        
