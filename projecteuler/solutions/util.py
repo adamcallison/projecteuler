@@ -77,3 +77,16 @@ def divisors(n, proper=True):
     div.sort()
     return div
         
+class FactorialCalculator:
+    def __init__(self):
+        self.factorials = [1]
+
+    def __call__(self, n):
+        for j in range(len(self.factorials), n+1):
+            self.factorials.append(self.factorials[-1]*j)
+        return self.factorials[n]
+
+_factorial_calculator = FactorialCalculator()
+def factorial(n):
+    return _factorial_calculator(n)
+        
