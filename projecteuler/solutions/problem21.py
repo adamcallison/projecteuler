@@ -1,7 +1,7 @@
 # https://projecteuler.net/problem=21
 # Evaluate the sum of all the amicable numbers under 10000.
 
-from . import util
+from projecteuler.solutions import util
 
 def sum_amicable_under(n):
     res = 0

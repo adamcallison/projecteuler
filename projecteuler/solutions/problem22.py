@@ -1,7 +1,7 @@
 # https://projecteuler.net/problem=22
 # What is the total of all the name scores in the file?
 
-from urllib.request import urlopen
+import os
 
 def total_name_score(names):
     names = sorted(names)
@@ -11,8 +11,8 @@ def total_name_score(names):
     return total
     
 if __name__ == '__main__':
-    fileurl = 'https://projecteuler.net/project/resources/p022_names.txt'
-    names = str(urlopen(fileurl).read()).replace('"','').replace("'",'').replace("b", '').strip().split(',')
+    with open(f"{os.path.dirname(__file__)}/../../data/p022_names.txt", 'r') as f:
+        names = f.read().replace('"','').strip().split(',')
     print(total_name_score(names))
 
 
